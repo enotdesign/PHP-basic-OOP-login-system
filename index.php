@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -14,6 +21,35 @@
 </head>
 
 <body>
+
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <span class="fs-4">Simple header</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+      
+
+      <?php if(isset($_SESSION['userid'])){ ?>
+          <li class="nav-item"><a href="#" class="nav-link"><?php echo $_SESSION['userid'] ?></a></li>
+      <?php }else{?>
+          <li class="nav-item"><a href="#" class="nav-link">LOGIN</a></li>
+      <?php }?>
+
+</ul>
+      
+    </header>
+  </div>
+
+
   <div class="container pt-5  "> 
     <div class="row">
       <div class="col">
@@ -40,10 +76,10 @@
       </div>
       <div class="col">
         <h4>Login</h4>
-        <form action="include/signup.inc.php" method="POST">
+        <form action="include/login.inc.php" method="POST">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input name="uid" type="email" class="form-control">
+            <input name="uid" type="text" class="form-control">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
